@@ -3,3 +3,8 @@ server:
   address: ":8080"
   readTimeout: 10s
   writeTimeout: 10s
+db:
+  dsn: "root:Zsg123456@tcp(127.0.0.1:3306)/rose?parseTime=true"
+  active: 10
+  idle: 10
+  idleTimeout: 60s
