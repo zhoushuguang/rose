@@ -28,3 +28,7 @@ func (r *Repo) CreateUser(ctx context.Context, userName string) (int64, error) {
 func (r *Repo) GetUserByIDs(ctx context.Context, userIDs []string) ([]*db.UserModel, error) {
 	return r.db.GetUserByIDs(ctx, userIDs)
 }
+
+func (r *Repo) GetPurchaseWithPage(ctx context.Context, userId int64, pageSize, pageNo int) ([]*db.PurchaseModel, int, error) {
+	return r.db.GetPurchaseWithPage(ctx, userId, pageSize, pageNo)
+}

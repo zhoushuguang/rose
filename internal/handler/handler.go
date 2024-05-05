@@ -17,4 +17,9 @@ func InitRouter(s *chttp.Server, service *service.Service) {
 		ug.GET("/detail", userDetail)
 		ug.GET("/list", userList)
 	}
+
+	ag := g.Group("/admin")
+	{
+		ag.GET("/purcharse/list", adminPurcharseList)
+	}
 }
