@@ -25,6 +25,7 @@ func NewServer(conf *Config) *Server {
 	}
 
 	s.RouterGroup = &s.engine.RouterGroup
+	s.engine.Use(HeaderHandler) // header信息写入context
 
 	return s
 }
