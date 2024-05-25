@@ -4,15 +4,17 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/zhoushuguang/rose/common/net/chttp"
 	"github.com/zhoushuguang/rose/internal/dto"
 )
 
 func userDetail(c *gin.Context) {
-	r := new(dto.UserDetailReq)
-	if err := c.Bind(r); err != nil {
+	userID := chttp.GetUserID(c.Request.Context())
+	if userID == 0 {
+		c.JSON(http.StatusUnauthorized, nil)
 		return
 	}
-	ret, err := svc.UserDetail(c.Request.Context(), r.UserId)
+	ret, err := svc.UserDetail(c.Request.Context(), userID)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, nil)
 	}
